@@ -313,31 +313,6 @@ if __name__ == '__main__':
 
         i += 1
     
-    ## Train on whole dataset
-    #train_data_pos = data[dx==1];
-    #train_data_neg = data[dx==0];
-    #train_age_pos = age[dx==1];
-    #train_age_neg = age[dx==0];
-    #train_sex_pos = sex[dx==1];
-    #train_sex_neg = sex[dx==0];
-
-    #train_data_pos_aug,train_age_pos_aug,train_sex_pos_aug = augment_by_transformation(train_data_pos,train_age_pos,train_sex_pos,augment_size)
-    #del train_data_pos
-    #train_data_neg_aug,train_age_neg_aug,train_sex_neg_aug = augment_by_transformation(train_data_neg,train_age_neg,train_sex_neg,augment_size)
-    #del train_data_neg
-
-    #train_data_aug = np.concatenate((train_data_neg_aug, train_data_pos_aug), axis=0)
-    #del train_data_neg_aug
-    #del train_data_pos_aug
-    #train_age_aug = np.concatenate((train_age_neg_aug, train_age_pos_aug), axis=0)
-    #train_sex_aug = np.concatenate((train_sex_neg_aug, train_sex_pos_aug), axis=0)
-    #train_dx_aug = np.zeros((augment_size * 2,))
-    #train_dx_aug[augment_size:] = 1   
-     
-    #gan = GAN()
-    #gan.train(epochs=1501, training=[train_data_aug, train_dx_aug, train_age_aug, train_sex_aug], testing=[train_data_aug, train_dx_aug, train_age_aug, train_sex_aug], testing_raw=[data, dx, age, sex], batch_size=64, fold=0)
-    
-    #exit()
 
     ## cross-validation
     skf = StratifiedKFold(n_splits=5,shuffle=True)
