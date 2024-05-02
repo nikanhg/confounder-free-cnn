@@ -1,0 +1,115 @@
+base:
+  cudnn_deterministic: false
+  data_path: C:/Users/baner/OneDrive/Desktop/ML2 CF-Net/OCTDL/output/
+  device: cpu
+  overwrite: false
+  progress: true
+  random_seed: 0
+  save_path: C:/Users/baner/OneDrive/Desktop/ML2 CF-Net/OCTDL/output
+criterion_args:
+  cross_entropy: {}
+data:
+  data_augmentation:
+  - random_crop
+  - horizontal_flip
+  - vertical_flip
+  - color_distortion
+  - rotation
+  - translation
+  - gaussian_blur
+  in_channels: 3
+  input_size: 224
+  mean: auto
+  num_classes: 7
+  sampling_strategy: class_balanced
+  sampling_weights_decay_rate: 0.9
+  std: auto
+data_augmentation_args:
+  color_distortion:
+    brightness: 0.2
+    contrast: 0.2
+    hue: 0.2
+    prob: 0.5
+    saturation: 0.2
+  gaussian_blur:
+    kernel_size: 7
+    prob: 0.2
+    sigma: 0.6
+  grayscale:
+    prob: 0.5
+  horizontal_flip:
+    prob: 0.5
+  random_crop:
+    prob: 0.5
+    ratio:
+    - 0.65
+    - 1.3
+    scale:
+    - 0.87
+    - 1.15
+  rotation:
+    degrees:
+    - -180
+    - 180
+    prob: 0.5
+  translation:
+    prob: 0.5
+    range:
+    - 0.2
+    - 0.2
+  value_fill: 0
+  vertical_flip:
+    prob: 0.5
+scheduler_args:
+  clipped_cosine:
+    T_max: 100
+    min_lr: 0.0001
+  cosine:
+    T_max: 100
+    eta_min: 0
+  exponential:
+    gamma: 0.6
+  multiple_steps:
+    gamma: 0.1
+    milestones:
+    - 15
+    - 25
+    - 45
+  reduce_on_plateau:
+    eps: 1.0e-05
+    factor: 0.1
+    mode: min
+    patience: 5
+    threshold: 0.0001
+solver:
+  adamw_betas:
+  - 0.9
+  - 0.999
+  learning_rate: 0.0003
+  lr_scheduler: cosine
+  momentum: 0.9
+  nesterov: true
+  optimizer: ADAM
+  weight_decay: 0.0005
+train:
+  batch_size: 64
+  checkpoint: null
+  criterion: cross_entropy
+  epochs: 100
+  eval_interval: 1
+  indicator: acc
+  loss_weight: null
+  loss_weight_decay_rate: 0
+  metrics:
+  - acc
+  - f1
+  - auc
+  - precision
+  - recall
+  network: vgg16
+  num_workers: 8
+  pin_memory: true
+  pretrained: true
+  sample_view: false
+  save_interval: 5
+  warmup_epochs: 0
